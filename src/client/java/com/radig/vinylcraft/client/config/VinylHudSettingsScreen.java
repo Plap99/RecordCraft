@@ -6,7 +6,7 @@ import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 
-/** Pantalla F6 para configurar el HUD y el alcance del audio de VinylCraft. */
+/** Pantalla F6 para configurar el HUD y el alcance del audio de RecordCraft. */
 public final class VinylHudSettingsScreen extends Screen {
 
     private Button enabledButton;
@@ -15,7 +15,7 @@ public final class VinylHudSettingsScreen extends Screen {
     private Button sourceModeButton;
 
     public VinylHudSettingsScreen() {
-        super(Component.literal("VinylCraft - Configuración"));
+        super(Component.literal("RecordCraft - Configuración"));
     }
 
     @Override
@@ -115,7 +115,7 @@ public final class VinylHudSettingsScreen extends Screen {
 
         graphics.centeredText(
                 this.font,
-                "VinylCraft - Configuración",
+                "RecordCraft - Configuración",
                 this.width / 2,
                 20,
                 0xFFFFFFFF

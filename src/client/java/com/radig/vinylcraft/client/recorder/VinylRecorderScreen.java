@@ -369,20 +369,32 @@ public class VinylRecorderScreen extends Screen {
     }
 
     @Override
-    public void extractRenderState(
-            GuiGraphicsExtractor graphics,
-            int mouseX,
-            int mouseY,
-            float delta) {
+        public void extractRenderState(
+                GuiGraphicsExtractor graphics,
+                int mouseX,
+                int mouseY,
+                float delta) {
 
+        Layout layout = getLayout();
+
+        // Fondos propios de esta pantalla.
+        // IMPORTANTE: deben extraerse ANTES de super para que los widgets
+        // (botones y árbol) queden dibujados encima.
+        graphics.fill(
+                layout.panelX(),
+                CONTENT_TOP,
+                layout.panelX() + layout.panelWidth(),
+                layout.contentBottom(),
+                0x88000000
+        );
+
+        // Ahora extraemos los widgets encima de nuestros fondos.
         super.extractRenderState(
                 graphics,
                 mouseX,
                 mouseY,
                 delta
         );
-
-        Layout layout = getLayout();
 
         graphics.centeredText(
                 this.font,
@@ -392,26 +404,35 @@ public class VinylRecorderScreen extends Screen {
                 0xFFFFFFFF
         );
 
-        graphics.fill(
-                layout.panelX(),
-                CONTENT_TOP,
-                layout.panelX() + layout.panelWidth(),
-                layout.contentBottom(),
-                0x88000000
-        );
-
         drawTrackSection(graphics, layout);
 
         if (MusicLibraryManager.getRootFolders().isEmpty()) {
-            graphics.centeredText(
-                    this.font,
-                    "No hay carpetas de música configuradas. Usa Carpetas.",
-                    layout.contentX() + layout.treeWidth() / 2,
-                    CONTENT_TOP + 18,
-                    0xFFFFAA55
-            );
+                String message = "No hay carpetas de música configuradas.";
+
+                int availableWidth = Math.max(40, layout.treeWidth() - 20);
+
+                message = this.font.plainSubstrByWidth(
+                        message,
+                        availableWidth
+                );
+
+                graphics.centeredText(
+                        this.font,
+                        message,
+                        layout.contentX() + layout.treeWidth() / 2,
+                        CONTENT_TOP + 18,
+                        0xFFFFAA55
+                );
+
+                graphics.centeredText(
+                        this.font,
+                        "Usa el botón Carpetas.",
+                        layout.contentX() + layout.treeWidth() / 2,
+                        CONTENT_TOP + 32,
+                        0xFFFFAA55
+                );
         }
-    }
+        }
 
     private void drawTrackSection(
             GuiGraphicsExtractor graphics,

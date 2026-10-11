@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "vinylcraft",
   "version": "${version}",
-  "name": "VinylCraft",
+  "name": "RecordCraft",
   "description": "Crea vinilos personalizados, graba álbumes y reproduce tu música en tocadiscos, Discman y audífonos con audio posicional dentro de Minecraft.",
   "authors": [
     "Radig"
   ],
-  "contact": {
-    "homepage": "https://github.com/Plap99/VinylCraft",
-    "sources": "https://github.com/Plap99/VinylCraft",
-    "issues": "https://github.com/Plap99/VinylCraft/issues"
+    "contact": {
+    "homepage": "https://github.com/Plap99/RecordCraft",
+    "sources": "https://github.com/Plap99/RecordCraft",
+    "issues": "https://github.com/Plap99/RecordCraft/issues"
   },
   "license": "All-Rights-Reserved",
   "icon": "assets/vinylcraft/icon.png",

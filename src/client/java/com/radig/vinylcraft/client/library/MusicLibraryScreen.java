@@ -38,7 +38,7 @@ public class MusicLibraryScreen extends Screen {
     }
 
     public MusicLibraryScreen(Screen returnScreen) {
-        super(Component.literal("Biblioteca VinylCraft"));
+        super(Component.literal("Biblioteca RecordCraft"));
         this.returnScreen = returnScreen;
     }
 
@@ -402,7 +402,7 @@ public class MusicLibraryScreen extends Screen {
 
         graphics.centeredText(
                 this.font,
-                "Biblioteca VinylCraft",
+                "Biblioteca RecordCraft",
                 centerX,
                 20,
                 0xFFFFFFFF

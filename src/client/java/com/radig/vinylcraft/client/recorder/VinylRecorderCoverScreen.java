@@ -511,20 +511,31 @@ public class VinylRecorderCoverScreen extends Screen {
     }
 
     @Override
-    public void extractRenderState(
-            GuiGraphicsExtractor graphics,
-            int mouseX,
-            int mouseY,
-            float delta) {
+        public void extractRenderState(
+                GuiGraphicsExtractor graphics,
+                int mouseX,
+                int mouseY,
+                float delta) {
 
+        Layout layout = getLayout();
+
+        // Fondo del panel derecho.
+        // Debe dibujarse ANTES de los widgets para no tapar los botones.
+        graphics.fill(
+                layout.panelX(),
+                CONTENT_TOP,
+                layout.panelX() + layout.panelWidth(),
+                layout.contentBottom(),
+                0x88000000
+        );
+
+        // Widgets encima del fondo.
         super.extractRenderState(
                 graphics,
                 mouseX,
                 mouseY,
                 delta
         );
-
-        Layout layout = getLayout();
 
         graphics.centeredText(
                 this.font,
@@ -534,16 +545,8 @@ public class VinylRecorderCoverScreen extends Screen {
                 0xFFFFFFFF
         );
 
-        graphics.fill(
-                layout.panelX(),
-                CONTENT_TOP,
-                layout.panelX() + layout.panelWidth(),
-                layout.contentBottom(),
-                0x88000000
-        );
-
         drawCoverSection(graphics, layout);
-    }
+        }
 
     private void drawCoverSection(
             GuiGraphicsExtractor graphics,
