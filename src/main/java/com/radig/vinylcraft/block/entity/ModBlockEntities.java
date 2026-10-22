@@ -36,6 +36,7 @@ public class ModBlockEntities {
                     ModBlocks.MANGROVE_VINYL_PLAYER,
                     ModBlocks.CHERRY_VINYL_PLAYER,
                     ModBlocks.PALE_OAK_VINYL_PLAYER,
+                    ModBlocks.POPLAR_VINYL_PLAYER,
                     ModBlocks.BAMBOO_VINYL_PLAYER,
                     ModBlocks.CRIMSON_VINYL_PLAYER,
                     ModBlocks.WARPED_VINYL_PLAYER
@@ -62,6 +63,7 @@ public class ModBlockEntities {
                     ModBlocks.MANGROVE_VINYL_RECORDER,
                     ModBlocks.CHERRY_VINYL_RECORDER,
                     ModBlocks.PALE_OAK_VINYL_RECORDER,
+                    ModBlocks.POPLAR_VINYL_RECORDER,
                     ModBlocks.BAMBOO_VINYL_RECORDER,
                     ModBlocks.CRIMSON_VINYL_RECORDER,
                     ModBlocks.WARPED_VINYL_RECORDER

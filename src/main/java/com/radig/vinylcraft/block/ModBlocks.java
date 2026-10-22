@@ -45,6 +45,9 @@ public class ModBlocks {
     public static final Block PALE_OAK_VINYL_PLAYER =
             createVinylPlayer(ModBlockItemIds.PALE_OAK_VINYL_PLAYER);
 
+    public static final Block POPLAR_VINYL_PLAYER =
+            createVinylPlayer(ModBlockItemIds.POPLAR_VINYL_PLAYER);
+
     public static final Block BAMBOO_VINYL_PLAYER =
             createVinylPlayer(ModBlockItemIds.BAMBOO_VINYL_PLAYER);
 
@@ -86,6 +89,9 @@ public class ModBlocks {
 
     public static final Block PALE_OAK_VINYL_RECORDER =
             createVinylRecorder(ModBlockItemIds.PALE_OAK_VINYL_RECORDER);
+
+    public static final Block POPLAR_VINYL_RECORDER =
+            createVinylRecorder(ModBlockItemIds.POPLAR_VINYL_RECORDER);
 
     public static final Block BAMBOO_VINYL_RECORDER =
             createVinylRecorder(ModBlockItemIds.BAMBOO_VINYL_RECORDER);
@@ -165,6 +171,8 @@ public class ModBlocks {
 
         registerBlock(ModBlockItemIds.PALE_OAK_VINYL_PLAYER, PALE_OAK_VINYL_PLAYER);
 
+        registerBlock(ModBlockItemIds.POPLAR_VINYL_PLAYER, POPLAR_VINYL_PLAYER);
+
         registerBlock(ModBlockItemIds.BAMBOO_VINYL_PLAYER, BAMBOO_VINYL_PLAYER);
 
         registerBlock(ModBlockItemIds.CRIMSON_VINYL_PLAYER, CRIMSON_VINYL_PLAYER);
@@ -188,6 +196,8 @@ public class ModBlocks {
         registerBlock(ModBlockItemIds.CHERRY_VINYL_RECORDER, CHERRY_VINYL_RECORDER);
 
         registerBlock(ModBlockItemIds.PALE_OAK_VINYL_RECORDER, PALE_OAK_VINYL_RECORDER);
+
+        registerBlock(ModBlockItemIds.POPLAR_VINYL_RECORDER, POPLAR_VINYL_RECORDER);
 
         registerBlock(ModBlockItemIds.BAMBOO_VINYL_RECORDER, BAMBOO_VINYL_RECORDER);
 

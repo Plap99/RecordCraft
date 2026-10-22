@@ -204,6 +204,7 @@ public static final Item BLACK_HEADPHONES =
                     creativeTab.accept(ModBlocks.MANGROVE_VINYL_PLAYER);
                     creativeTab.accept(ModBlocks.CHERRY_VINYL_PLAYER);
                     creativeTab.accept(ModBlocks.PALE_OAK_VINYL_PLAYER);
+                    creativeTab.accept(ModBlocks.POPLAR_VINYL_PLAYER);
                     creativeTab.accept(ModBlocks.BAMBOO_VINYL_PLAYER);
                     creativeTab.accept(ModBlocks.CRIMSON_VINYL_PLAYER);
                     creativeTab.accept(ModBlocks.WARPED_VINYL_PLAYER);
@@ -217,6 +218,7 @@ public static final Item BLACK_HEADPHONES =
                     creativeTab.accept(ModBlocks.MANGROVE_VINYL_RECORDER);
                     creativeTab.accept(ModBlocks.CHERRY_VINYL_RECORDER);
                     creativeTab.accept(ModBlocks.PALE_OAK_VINYL_RECORDER);
+                    creativeTab.accept(ModBlocks.POPLAR_VINYL_RECORDER);
                     creativeTab.accept(ModBlocks.BAMBOO_VINYL_RECORDER);
                     creativeTab.accept(ModBlocks.CRIMSON_VINYL_RECORDER);
                     creativeTab.accept(ModBlocks.WARPED_VINYL_RECORDER);

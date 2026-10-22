@@ -1,0 +1,7 @@
+{
+  "parent": "vinylcraft:block/vinyl_player_closed",
+  "textures": {
+    "particle": "minecraft:block/poplar_planks",
+    "body": "minecraft:block/poplar_planks"
+  }
+}

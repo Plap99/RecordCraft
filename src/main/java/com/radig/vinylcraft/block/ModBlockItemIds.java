@@ -40,6 +40,9 @@ public class ModBlockItemIds {
     public static final BlockItemId PALE_OAK_VINYL_PLAYER =
             create("pale_oak_vinyl_player");
 
+    public static final BlockItemId POPLAR_VINYL_PLAYER =
+            create("poplar_vinyl_player");
+
     public static final BlockItemId BAMBOO_VINYL_PLAYER =
             create("bamboo_vinyl_player");
 
@@ -81,6 +84,9 @@ public class ModBlockItemIds {
 
     public static final BlockItemId PALE_OAK_VINYL_RECORDER =
             create("pale_oak_vinyl_recorder");
+
+    public static final BlockItemId POPLAR_VINYL_RECORDER =
+            create("poplar_vinyl_recorder");
 
     public static final BlockItemId BAMBOO_VINYL_RECORDER =
             create("bamboo_vinyl_recorder");
