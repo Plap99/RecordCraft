@@ -577,15 +577,16 @@ public final class VinylPlayerSoundManager {
             return Double.MAX_VALUE;
         }
 
-        if (minecraft.player == null) {
+        var localPlayer = minecraft.player;
+        if (localPlayer == null) {
             return 0.0D;
         }
 
         var pos = entity.getBlockPos();
 
-        double dx = minecraft.player.getX() - (pos.getX() + 0.5D);
-        double dy = minecraft.player.getY() - (pos.getY() + 0.5D);
-        double dz = minecraft.player.getZ() - (pos.getZ() + 0.5D);
+        double dx = localPlayer.getX() - (pos.getX() + 0.5D);
+        double dy = localPlayer.getY() - (pos.getY() + 0.5D);
+        double dz = localPlayer.getZ() - (pos.getZ() + 0.5D);
 
         return dx * dx + dy * dy + dz * dz;
     }

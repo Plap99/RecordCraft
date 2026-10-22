@@ -504,8 +504,6 @@ public class MusicLibraryScreen extends Screen {
                         .isEmpty()
         ) {
 
-            int messageX;
-
             int panelX =
                     contentX
                     + treeWidth
@@ -640,7 +638,7 @@ public class MusicLibraryScreen extends Screen {
         * ─────────────────────────────
         */
 
-        if (largeCoverMode) {
+        if (largeCoverMode && coverTexture != null) {
 
             int maxCoverSize =
                     Math.min(

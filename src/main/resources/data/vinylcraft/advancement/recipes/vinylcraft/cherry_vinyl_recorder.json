@@ -24,7 +24,9 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "vinylcraft:cherry_vinyl_recorder"
+        "recipes": [
+          "vinylcraft:cherry_vinyl_recorder"
+        ]
       }
     }
   },

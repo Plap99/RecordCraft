@@ -1,8 +1,6 @@
 package com.radig.vinylcraft.block;
 
-import com.mojang.serialization.MapCodec;
 import com.radig.vinylcraft.block.entity.AlbumFrameBlockEntity;
-import com.radig.vinylcraft.block.entity.ModBlockEntities;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -29,8 +27,6 @@ import org.jetbrains.annotations.Nullable;
  */
 public final class AlbumFrameBlock extends HorizontalDirectionalBlock implements EntityBlock {
 
-    public static final MapCodec<AlbumFrameBlock> CODEC = simpleCodec(AlbumFrameBlock::new);
-
     private static final VoxelShape NORTH_SHAPE = Block.box(0, 0, 15, 16, 16, 16);
     private static final VoxelShape SOUTH_SHAPE = Block.box(0, 0, 0, 16, 16, 1);
     private static final VoxelShape EAST_SHAPE = Block.box(0, 0, 0, 1, 16, 16);
@@ -39,11 +35,6 @@ public final class AlbumFrameBlock extends HorizontalDirectionalBlock implements
     public AlbumFrameBlock(Properties properties) {
         super(properties);
         registerDefaultState(stateDefinition.any().setValue(FACING, Direction.NORTH));
-    }
-
-    @Override
-    protected MapCodec<? extends HorizontalDirectionalBlock> codec() {
-        return CODEC;
     }
 
     @Override

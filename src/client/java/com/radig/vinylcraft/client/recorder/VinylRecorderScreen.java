@@ -2,7 +2,6 @@ package com.radig.vinylcraft.client.recorder;
 
 import java.nio.file.Path;
 import java.util.List;
-import java.util.ArrayList;
 import com.radig.vinylcraft.client.sound.LocalAudioStreamFactory;
 import net.minecraft.client.input.MouseButtonEvent;
 

@@ -1,12 +1,12 @@
 package com.radig.vinylcraft.block;
 
-import com.mojang.serialization.MapCodec;
 import com.radig.vinylcraft.block.entity.ModBlockEntities;
 import com.radig.vinylcraft.block.entity.VinylPlayerBlockEntity;
 import com.radig.vinylcraft.item.ModItems;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.util.Prediction;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -36,9 +36,6 @@ public class VinylPlayerBlock
 
     public static final BooleanProperty OPEN =
             BooleanProperty.create("open");
-
-    public static final MapCodec<VinylPlayerBlock> CODEC =
-            simpleCodec(VinylPlayerBlock::new);
 
     /*
      * =====================================================
@@ -76,11 +73,6 @@ public class VinylPlayerBlock
                         .setValue(FACING, Direction.NORTH)
                         .setValue(OPEN, true)
         );
-    }
-
-    @Override
-    protected MapCodec<? extends HorizontalDirectionalBlock> codec() {
-        return CODEC;
     }
 
     @Nullable
@@ -294,7 +286,7 @@ public class VinylPlayerBlock
 
             if (!vinyl.isEmpty()) {
                 if (!player.getInventory().add(vinyl)) {
-                    player.drop(vinyl, false);
+                    player.drop(vinyl, false, Prediction.SERVER_ONLY);
                 }
             }
 

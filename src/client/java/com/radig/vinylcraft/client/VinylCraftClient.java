@@ -13,7 +13,6 @@ import com.radig.vinylcraft.client.render.AlbumFrameBlockEntityRenderer;
 import com.radig.vinylcraft.client.render.becoya.BecoyaAccessoriesLayer;
 import com.radig.vinylcraft.client.render.becoya.BecoyaAccessoryModel;
 import com.radig.vinylcraft.client.sound.VinylPlayerSoundManager;
-import com.radig.vinylcraft.item.DiscmanData;
 import com.radig.vinylcraft.item.HeadphonesItem;
 import com.radig.vinylcraft.client.sound.DiscmanSoundManager;
 import com.radig.vinylcraft.client.music.RecordedAlbumStore;
@@ -45,8 +44,6 @@ import com.radig.vinylcraft.client.library.AudioMetadata;
 import com.radig.vinylcraft.client.library.AudioMetadataReader;
 
 import com.radig.vinylcraft.client.library.MusicLibraryConfig;
-
-import org.lwjgl.glfw.GLFW;
 
 import com.mojang.blaze3d.platform.InputConstants;
 import com.radig.vinylcraft.client.library.MusicLibraryScreen;
@@ -305,6 +302,8 @@ public class VinylCraftClient implements ClientModInitializer {
         );
         }
 
+        // Utilidad de diagnóstico manual; se conserva para pruebas futuras.
+        @SuppressWarnings("unused")
         private static void testMusicLibraryScanner() {
 
                 Path musicFolder =
@@ -386,6 +385,8 @@ public class VinylCraftClient implements ClientModInitializer {
                 }
         }
 
+        // Utilidad de diagnóstico manual; se conserva para pruebas futuras.
+        @SuppressWarnings("unused")
         private static void testAudioMetadata() {
                 Path audioFile =
                         Path.of(
@@ -494,8 +495,8 @@ public class VinylCraftClient implements ClientModInitializer {
                 KeyMappingHelper.registerKeyMapping(
                         new KeyMapping(
                                 "key.vinylcraft.open_hud_settings",
-                                InputConstants.Type.KEYSYM,
-                                GLFW.GLFW_KEY_F6,
+                                InputConstants.Type.KEYBOARD,
+                                InputConstants.KEY_F6,
                                 VINYLCRAFT_CATEGORY
                         )
                 );
@@ -504,8 +505,8 @@ public class VinylCraftClient implements ClientModInitializer {
                 KeyMappingHelper.registerKeyMapping(
                         new KeyMapping(
                                 "key.vinylcraft.open_library",
-                                InputConstants.Type.KEYSYM,
-                                GLFW.GLFW_KEY_F7,
+                                InputConstants.Type.KEYBOARD,
+                                InputConstants.KEY_F7,
                                 VINYLCRAFT_CATEGORY
                         )
                 );

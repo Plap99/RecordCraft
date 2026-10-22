@@ -842,14 +842,15 @@ private static final long FALLBACK_ALBUM_TICKS =
             BlockPos pos,
             BlockState state) {
 
+        var currentLevel = level;
         if (
-                level != null
-                && !level.isClientSide()
+                currentLevel != null
+                && !currentLevel.isClientSide()
                 && hasVinyl()
         ) {
 
             Block.popResource(
-                    level,
+                    currentLevel,
                     pos,
                     removeVinyl()
             );
@@ -886,15 +887,16 @@ private static final long FALLBACK_ALBUM_TICKS =
 
         super.setChanged();
 
+        var currentLevel = level;
         if (
-                level != null
-                && !level.isClientSide()
+                currentLevel != null
+                && !currentLevel.isClientSide()
         ) {
 
             BlockState state =
                     getBlockState();
 
-            level.sendBlockUpdated(
+            currentLevel.sendBlockUpdated(
                     worldPosition,
                     state,
                     state,

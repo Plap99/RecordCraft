@@ -3,6 +3,7 @@ package com.radig.vinylcraft.mixin;
 import com.radig.vinylcraft.player.DiscmanEquipmentHolder;
 
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.Prediction;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -99,7 +100,7 @@ public abstract class PlayerDiscmanEquipmentMixin implements DiscmanEquipmentHol
             ItemStack stack = container.removeItemNoUpdate(index);
 
             if (!stack.isEmpty()) {
-                player.drop(stack, true);
+                player.drop(stack, true, Prediction.SERVER_ONLY);
             }
         }
     }

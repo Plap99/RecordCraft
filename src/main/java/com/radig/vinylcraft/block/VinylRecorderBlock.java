@@ -1,6 +1,5 @@
 package com.radig.vinylcraft.block;
 
-import com.mojang.serialization.MapCodec;
 import com.radig.vinylcraft.block.entity.ModBlockEntities;
 import com.radig.vinylcraft.block.entity.VinylRecorderBlockEntity;
 import com.radig.vinylcraft.item.ModItems;
@@ -33,9 +32,6 @@ public class VinylRecorderBlock
         extends HorizontalDirectionalBlock
         implements EntityBlock {
 
-    public static final MapCodec<VinylRecorderBlock> CODEC =
-            simpleCodec(VinylRecorderBlock::new);
-
     private static final VoxelShape SHAPE =
             Block.box(
                     1.0D, 0.0D, 1.0D,
@@ -49,11 +45,6 @@ public class VinylRecorderBlock
                 stateDefinition.any()
                         .setValue(FACING, Direction.NORTH)
         );
-    }
-
-    @Override
-    protected MapCodec<? extends HorizontalDirectionalBlock> codec() {
-        return CODEC;
     }
 
     @Override

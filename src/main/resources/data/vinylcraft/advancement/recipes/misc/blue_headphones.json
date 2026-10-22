@@ -13,7 +13,9 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "vinylcraft:blue_headphones"
+        "recipes": [
+          "vinylcraft:blue_headphones"
+        ]
       },
       "trigger": "minecraft:recipe_unlocked"
     }

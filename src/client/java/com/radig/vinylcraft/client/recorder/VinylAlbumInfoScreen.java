@@ -39,8 +39,6 @@ public final class VinylAlbumInfoScreen extends Screen {
     private final BlockPos recorderPos;
     private int scroll;
     private Button wallSizeButton;
-    private Button titleEditButton;
-    private Button artistEditButton;
     private final List<Button> trackEditButtons = new ArrayList<>();
 
     public VinylAlbumInfoScreen(BlockPos recorderPos) {
@@ -87,7 +85,7 @@ public final class VinylAlbumInfoScreen extends Screen {
 
         int titleButtonX = layout.right() - 168;
 
-        titleEditButton = addRenderableWidget(
+        addRenderableWidget(
                 new RecorderColorButton(
                         titleButtonX,
                         layout.top() + 34,
@@ -99,7 +97,7 @@ public final class VinylAlbumInfoScreen extends Screen {
                 )
         );
 
-        artistEditButton = addRenderableWidget(
+        addRenderableWidget(
                 new RecorderColorButton(
                         titleButtonX,
                         layout.top() + 54,
@@ -304,11 +302,12 @@ public final class VinylAlbumInfoScreen extends Screen {
     }
 
     private VinylRecorderBlockEntity currentRecorder() {
-        if (minecraft == null || minecraft.level == null) {
+        var currentLevel = minecraft == null ? null : minecraft.level;
+        if (currentLevel == null) {
             return null;
         }
 
-        if (!(minecraft.level.getBlockEntity(recorderPos) instanceof VinylRecorderBlockEntity recorder)) {
+        if (!(currentLevel.getBlockEntity(recorderPos) instanceof VinylRecorderBlockEntity recorder)) {
             return null;
         }
 

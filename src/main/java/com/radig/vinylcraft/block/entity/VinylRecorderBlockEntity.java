@@ -674,7 +674,8 @@ public class VinylRecorderBlockEntity
             BlockPos pos,
             BlockState state) {
 
-        if (level != null && !level.isClientSide() && hasVinyl()) {
+        var currentLevel = level;
+        if (currentLevel != null && !currentLevel.isClientSide() && hasVinyl()) {
             recording = false;
 
             /*
@@ -688,7 +689,7 @@ public class VinylRecorderBlockEntity
             items.set(0, ItemStack.EMPTY);
 
             if (!dropped.isEmpty()) {
-                Block.popResource(level, pos, dropped);
+                Block.popResource(currentLevel, pos, dropped);
             }
         }
 
@@ -709,10 +710,11 @@ public class VinylRecorderBlockEntity
     public void setChanged() {
         super.setChanged();
 
-        if (level != null && !level.isClientSide()) {
+        var currentLevel = level;
+        if (currentLevel != null && !currentLevel.isClientSide()) {
             BlockState state = getBlockState();
 
-            level.sendBlockUpdated(
+            currentLevel.sendBlockUpdated(
                     worldPosition,
                     state,
                     state,

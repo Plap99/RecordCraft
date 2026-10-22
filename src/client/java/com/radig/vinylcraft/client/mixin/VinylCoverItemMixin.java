@@ -22,7 +22,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 /**
  * Dibuja la portada real sobre la funda del vinilo grabado SOLO en los GUI.
  * No altera el ItemStack, ni el disco 3D colocado ni el render en la mano.
- * Compatible con el motor GUI por extracción de Minecraft 26.2.
+ * Compatible con el motor GUI por extracción de Minecraft 26.3.
  */
 @Mixin(GuiGraphicsExtractor.class)
 public abstract class VinylCoverItemMixin {

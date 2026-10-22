@@ -123,7 +123,8 @@ public final class AlbumFrameBlockEntity extends BlockEntity {
     }
 
     private void removeWholeMural() {
-        if (level == null) {
+        var currentLevel = level;
+        if (currentLevel == null) {
             return;
         }
 
@@ -135,7 +136,7 @@ public final class AlbumFrameBlockEntity extends BlockEntity {
         int size = Math.max(1, Math.min(10, wallSize));
 
         ItemStack vinylToDrop = ItemStack.EMPTY;
-        if (level.getBlockEntity(origin) instanceof AlbumFrameBlockEntity originFrame) {
+        if (currentLevel.getBlockEntity(origin) instanceof AlbumFrameBlockEntity originFrame) {
             vinylToDrop = originFrame.takeStoredVinyl();
         }
 
@@ -143,7 +144,7 @@ public final class AlbumFrameBlockEntity extends BlockEntity {
         for (int y = 0; y < size; y++) {
             for (int x = 0; x < size; x++) {
                 BlockPos tile = origin.above(y).relative(right, x);
-                if (level.getBlockEntity(tile) instanceof AlbumFrameBlockEntity frame) {
+                if (currentLevel.getBlockEntity(tile) instanceof AlbumFrameBlockEntity frame) {
                     frame.suppressCleanup = true;
                 }
             }
@@ -153,14 +154,14 @@ public final class AlbumFrameBlockEntity extends BlockEntity {
         for (int y = 0; y < size; y++) {
             for (int x = 0; x < size; x++) {
                 BlockPos tile = origin.above(y).relative(right, x);
-                if (level.getBlockState(tile).getBlock() == ModBlocks.ALBUM_FRAME) {
-                    level.removeBlock(tile, false);
+                if (currentLevel.getBlockState(tile).getBlock() == ModBlocks.ALBUM_FRAME) {
+                    currentLevel.removeBlock(tile, false);
                 }
             }
         }
 
         if (!vinylToDrop.isEmpty()) {
-            Block.popResource(level, origin, vinylToDrop);
+            Block.popResource(currentLevel, origin, vinylToDrop);
         }
     }
 
@@ -178,9 +179,10 @@ public final class AlbumFrameBlockEntity extends BlockEntity {
     public void setChanged() {
         super.setChanged();
 
-        if (level != null && !level.isClientSide()) {
+        var currentLevel = level;
+        if (currentLevel != null && !currentLevel.isClientSide()) {
             BlockState state = getBlockState();
-            level.sendBlockUpdated(worldPosition, state, state, Block.UPDATE_CLIENTS);
+            currentLevel.sendBlockUpdated(worldPosition, state, state, Block.UPDATE_CLIENTS);
         }
     }
 }

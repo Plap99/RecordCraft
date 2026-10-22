@@ -24,7 +24,9 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "vinylcraft:spruce_vinyl_recorder"
+        "recipes": [
+          "vinylcraft:spruce_vinyl_recorder"
+        ]
       }
     }
   },

@@ -24,7 +24,9 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "vinylcraft:warped_vinyl_player"
+        "recipes": [
+          "vinylcraft:warped_vinyl_player"
+        ]
       }
     }
   },

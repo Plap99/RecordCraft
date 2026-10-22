@@ -9,10 +9,6 @@ import net.minecraft.network.chat.Component;
 /** Pantalla F6 para configurar el HUD y el alcance del audio de RecordCraft. */
 public final class VinylHudSettingsScreen extends Screen {
 
-    private Button enabledButton;
-    private Button positionButton;
-    private Button alphaModeButton;
-    private Button sourceModeButton;
 
     public VinylHudSettingsScreen() {
         super(Component.literal("RecordCraft - Configuración"));
@@ -28,7 +24,7 @@ public final class VinylHudSettingsScreen extends Screen {
         int y = Math.max(40, height / 2 - 92);
 
         // Columna izquierda: HUD visual.
-        enabledButton = addRenderableWidget(
+        addRenderableWidget(
                 Button.builder(enabledMessage(), button -> {
                     VinylHudConfig.setEnabled(!VinylHudConfig.isEnabled());
                     button.setMessage(enabledMessage());
@@ -36,7 +32,7 @@ public final class VinylHudSettingsScreen extends Screen {
                 }).bounds(xLeft, y, controlWidth, 20).build()
         );
 
-        positionButton = addRenderableWidget(
+        addRenderableWidget(
                 Button.builder(positionMessage(), button -> {
                     VinylHudConfig.setPosition(VinylHudConfig.getPosition().next());
                     button.setMessage(positionMessage());
@@ -47,7 +43,7 @@ public final class VinylHudSettingsScreen extends Screen {
         addRenderableWidget(new SizeSlider(xLeft, y + 52, controlWidth, 20));
         addRenderableWidget(new AlphaSlider(xLeft, y + 78, controlWidth, 20));
 
-        alphaModeButton = addRenderableWidget(
+        addRenderableWidget(
                 Button.builder(alphaModeMessage(), button -> {
                     VinylHudConfig.setAlphaMode(VinylHudConfig.getAlphaMode().next());
                     button.setMessage(alphaModeMessage());
@@ -56,7 +52,7 @@ public final class VinylHudSettingsScreen extends Screen {
         );
 
         // Columna derecha: fuentes y audio.
-        sourceModeButton = addRenderableWidget(
+        addRenderableWidget(
                 Button.builder(sourceModeMessage(), button -> {
                     VinylHudConfig.setSourceMode(VinylHudConfig.getSourceMode().next());
                     button.setMessage(sourceModeMessage());

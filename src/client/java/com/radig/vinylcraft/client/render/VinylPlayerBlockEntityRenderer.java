@@ -291,9 +291,7 @@ public class VinylPlayerBlockEntityRenderer
             0.5F
     );
 
-    matrices.mulPose(
-            Axis.YP.rotationDegrees(blockRotation)
-    );
+    matrices.rotateDegrees(Axis.YP, blockRotation);
 
     matrices.translate(
             -0.5F,
@@ -356,11 +354,7 @@ public class VinylPlayerBlockEntityRenderer
         /*
         * ...giramos únicamente este render...
         */
-        matrices.mulPose(
-                Axis.YP.rotationDegrees(
-                        tonearmAngle
-                )
-        );
+        matrices.rotateDegrees(Axis.YP, tonearmAngle);
 
         /*
         * ...y regresamos al origen.
@@ -397,7 +391,7 @@ public class VinylPlayerBlockEntityRenderer
         matrices.pushPose();
 
         matrices.translate(0.5F, 0.0F, 0.5F);
-        matrices.mulPose(Axis.YP.rotationDegrees(blockRotation));
+        matrices.rotateDegrees(Axis.YP, blockRotation);
         matrices.translate(-0.5F, 0.0F, -0.5F);
 
         TextureAtlasSprite actionSprite =
@@ -536,18 +530,12 @@ public class VinylPlayerBlockEntityRenderer
         /*
          * El vinilo queda horizontal.
          */
-        matrices.mulPose(
-                Axis.XP.rotationDegrees(90.0F)
-        );
+        matrices.rotateDegrees(Axis.XP, 90.0F);
 
         /*
          * Rotación durante la reproducción.
          */
-        matrices.mulPose(
-                Axis.ZP.rotationDegrees(
-                        state.vinylRotation
-                )
-        );
+        matrices.rotateDegrees(Axis.ZP, state.vinylRotation);
 
         matrices.scale(
                 0.42F,

@@ -91,6 +91,11 @@ public final class PlaybackHudManager {
             Minecraft minecraft,
             List<PlaybackHudSource> sources) {
 
+        var localPlayer = minecraft.player;
+        if (localPlayer == null) {
+            return;
+        }
+
         for (VinylPlayerBlockEntity playerEntity :
                 VinylPlayerSoundManager.getHudPlayers()) {
 
@@ -106,9 +111,9 @@ public final class PlaybackHudManager {
             }
 
             var pos = playerEntity.getBlockPos();
-            double dx = minecraft.player.getX() - (pos.getX() + 0.5D);
-            double dy = minecraft.player.getY() - (pos.getY() + 0.5D);
-            double dz = minecraft.player.getZ() - (pos.getZ() + 0.5D);
+            double dx = localPlayer.getX() - (pos.getX() + 0.5D);
+            double dy = localPlayer.getY() - (pos.getY() + 0.5D);
+            double dz = localPlayer.getZ() - (pos.getZ() + 0.5D);
             double distanceSquared = dx * dx + dy * dy + dz * dz;
 
             sources.add(

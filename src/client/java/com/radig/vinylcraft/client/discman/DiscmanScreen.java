@@ -30,7 +30,6 @@ public final class DiscmanScreen extends Screen {
     private Button stopButton;
     private Button playPauseButton;
     private Button nextButton;
-    private Button closeButton;
 
     public DiscmanScreen() {
         super(Component.literal("Becoya's Module - Discman"));
@@ -89,7 +88,7 @@ public final class DiscmanScreen extends Screen {
                 20
         ).build());
 
-        closeButton = addRenderableWidget(Button.builder(
+        addRenderableWidget(Button.builder(
                 Component.literal("Cerrar"),
                 button -> onClose()
         ).bounds(
@@ -110,7 +109,7 @@ public final class DiscmanScreen extends Screen {
         refreshControls();
 
         /*
-         * Primero dibujamos TODO el panel y su contenido. Los widgets se
+         * Primero dibujamos todo el panel y su contenido. Los widgets se
          * extraen al final mediante super.extractRenderState(), para que el
          * rectángulo negro no quede encima de los botones.
          */
@@ -319,19 +318,21 @@ public final class DiscmanScreen extends Screen {
     }
 
     private ItemStack equippedDiscman() {
-        if (minecraft == null || minecraft.player == null) {
+        var player = minecraft == null ? null : minecraft.player;
+        if (player == null) {
             return ItemStack.EMPTY;
         }
 
-        return DiscmanData.findEquipped(minecraft.player);
+        return DiscmanData.findEquipped(player);
     }
 
     private boolean hasRecordedVinylInInventory() {
-        if (minecraft == null || minecraft.player == null) {
+        var player = minecraft == null ? null : minecraft.player;
+        if (player == null) {
             return false;
         }
 
-        var inventory = minecraft.player.getInventory();
+        var inventory = player.getInventory();
 
         for (int index = 0; index < inventory.getContainerSize(); index++) {
             ItemStack stack = inventory.getItem(index);

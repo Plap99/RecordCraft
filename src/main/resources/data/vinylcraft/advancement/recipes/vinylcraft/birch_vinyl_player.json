@@ -24,7 +24,9 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "vinylcraft:birch_vinyl_player"
+        "recipes": [
+          "vinylcraft:birch_vinyl_player"
+        ]
       }
     }
   },

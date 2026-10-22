@@ -37,7 +37,7 @@ Key bindings can also be changed from Minecraft's Controls settings.
 
 ## 📋 Requirements
 
-- Minecraft Java Edition **26.2**
+- Minecraft Java Edition **26.3**
 - Fabric Loader **0.19.5+**
 - Fabric API
 - Java **25**

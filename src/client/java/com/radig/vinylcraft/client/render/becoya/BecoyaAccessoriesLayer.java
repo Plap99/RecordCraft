@@ -106,8 +106,7 @@ public final class BecoyaAccessoriesLayer
                     headphonesTexture,
                     packedLight,
                     overlay,
-                    state.outlineColor,
-                    null
+                    state.outlineColor
             );
             poseStack.popPose();
         }
@@ -123,8 +122,7 @@ public final class BecoyaAccessoriesLayer
                     CABLE_TEXTURE,
                     packedLight,
                     overlay,
-                    state.outlineColor,
-                    null
+                    state.outlineColor
             );
             poseStack.popPose();
         }
@@ -138,7 +136,7 @@ public final class BecoyaAccessoriesLayer
              * se lea como un objeto colgado y no como parte de la skin.
              */
             poseStack.translate(0.12D, 0.58D, -0.28D);
-            poseStack.mulPose(Axis.YP.rotationDegrees(-1.5F));
+            poseStack.rotateDegrees(Axis.YP, -1.5F);
             collector.submitModel(
                     discmanModel,
                     state,
@@ -146,8 +144,7 @@ public final class BecoyaAccessoriesLayer
                     DISCMAN_TEXTURE,
                     packedLight,
                     overlay,
-                    state.outlineColor,
-                    null
+                    state.outlineColor
             );
             poseStack.popPose();
         }

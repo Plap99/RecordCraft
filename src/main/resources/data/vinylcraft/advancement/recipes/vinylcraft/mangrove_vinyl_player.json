@@ -24,7 +24,9 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "vinylcraft:mangrove_vinyl_player"
+        "recipes": [
+          "vinylcraft:mangrove_vinyl_player"
+        ]
       }
     }
   },
