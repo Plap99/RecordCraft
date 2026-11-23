@@ -14,6 +14,8 @@ import com.radig.vinylcraft.client.render.VinylPlayerButtonModel;
 import com.radig.vinylcraft.client.render.VinylPlayerTonearmModel;
 import com.radig.vinylcraft.client.render.VinylRecorderBlockEntityRenderer;
 import com.radig.vinylcraft.client.render.VinylRecorderTonearmModel;
+import com.radig.vinylcraft.client.render.becoya.BecoyaAccessoriesLayer;
+import com.radig.vinylcraft.client.render.becoya.BecoyaAccessoryModel;
 import com.radig.vinylcraft.client.sound.DiscmanSoundManager;
 import com.radig.vinylcraft.client.sound.VinylPlayerSoundManager;
 import com.radig.vinylcraft.item.HeadphonesItem;
@@ -81,11 +83,21 @@ public final class ForgeRecordCraftClient {
             event.registerLayerDefinition(VinylPlayerBlockEntityRenderer.TONEARM_LAYER, VinylPlayerTonearmModel::createLayer);
             event.registerLayerDefinition(VinylPlayerBlockEntityRenderer.BUTTON_LAYER, VinylPlayerButtonModel::createLayer);
             event.registerLayerDefinition(VinylRecorderBlockEntityRenderer.TONEARM_LAYER, VinylRecorderTonearmModel::createLayer);
+            event.registerLayerDefinition(BecoyaAccessoriesLayer.DISCMAN_LAYER, BecoyaAccessoryModel::createDiscmanLayer);
+            event.registerLayerDefinition(BecoyaAccessoriesLayer.HEADPHONES_LAYER, BecoyaAccessoryModel::createHeadphonesLayer);
+            event.registerLayerDefinition(BecoyaAccessoriesLayer.CABLE_LAYER, BecoyaAccessoryModel::createCableLayer);
         });
         EntityRenderersEvent.RegisterRenderers.BUS.addListener(event -> {
             event.registerBlockEntityRenderer(ModBlockEntities.VINYL_PLAYER, VinylPlayerBlockEntityRenderer::new);
             event.registerBlockEntityRenderer(ModBlockEntities.VINYL_RECORDER, VinylRecorderBlockEntityRenderer::new);
             event.registerBlockEntityRenderer(ModBlockEntities.ALBUM_FRAME, AlbumFrameBlockEntityRenderer::new);
+        });
+        EntityRenderersEvent.AddLayers.BUS.addListener(event -> {
+            for (var modelType : event.getModelTypes()) {
+                var renderer = event.getPlayerRenderer(modelType);
+                if (renderer instanceof net.minecraft.client.renderer.entity.player.AvatarRenderer<?> avatarRenderer)
+                    avatarRenderer.addLayer(new BecoyaAccessoriesLayer(avatarRenderer, event.getEntityModels()));
+            }
         });
     }
 
