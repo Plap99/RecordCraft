@@ -1,0 +1,24 @@
+modLoader="javafml"
+loaderVersion="[66,)"
+license="All Rights Reserved"
+
+[[mods]]
+modId="vinylcraft"
+version="${version}"
+displayName="RecordCraft"
+authors="Radig"
+description='''Crea vinilos personalizados, graba álbumes y reproduce tu música en tocadiscos, Discman y audífonos con audio posicional dentro de Minecraft.'''
+
+[[dependencies.vinylcraft]]
+modId="forge"
+mandatory=true
+versionRange="[66.1.8,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.vinylcraft]]
+modId="minecraft"
+mandatory=true
+versionRange="[26.3,26.4)"
+ordering="NONE"
+side="BOTH"

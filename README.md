@@ -37,10 +37,18 @@ Key bindings can also be changed from Minecraft's Controls settings.
 
 ## 📋 Requirements
 
-- Minecraft Java Edition **26.3**
-- Fabric Loader **0.19.5+**
-- Fabric API
+- Minecraft Java Edition **26.2** or **26.3**
 - Java **25**
+- Fabric builds require Fabric Loader and Fabric API
+- Forge builds require Forge **65.1.6+** for Minecraft 26.2 or **66.1.8+** for Minecraft 26.3
+
+## 🧱 Project layout
+
+- `common/` contains shared gameplay, blocks, items, data, and assets.
+- `fabric/` contains the Fabric entrypoints, registries, networking, and Fabric client adapters.
+- `forge/` contains the Forge entrypoint, registries, networking, and Forge client adapters.
+
+Build the loader variant from the repository root with `gradlew :fabric:build` or `gradlew :forge:build`.
 
 ## 💻 Platform Support
 

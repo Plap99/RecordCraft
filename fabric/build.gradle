@@ -1,0 +1,60 @@
+plugins {
+    id 'net.fabricmc.fabric-loom' version "${loom_version}"
+    id 'maven-publish'
+}
+
+base {
+    archivesName = 'recordcraft-fabric'
+}
+
+sourceSets.main.java.srcDir(rootProject.file('common/src/main/java'))
+sourceSets.main.resources.srcDir(rootProject.file('common/src/main/resources'))
+
+loom {
+    splitEnvironmentSourceSets()
+    mods {
+        "vinylcraft" {
+            sourceSet sourceSets.main
+            sourceSet sourceSets.client
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    implementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+
+    include(implementation("net.jthink:jaudiotagger:3.0.1"))
+    include(implementation("javazoom:jlayer:1.0.1"))
+    include(implementation("org.lwjgl:lwjgl-nfd:3.4.1"))
+    include(runtimeOnly("org.lwjgl:lwjgl-nfd:3.4.1:natives-windows"))
+    include(runtimeOnly("org.lwjgl:lwjgl-nfd:3.4.1:natives-windows-arm64"))
+    include(runtimeOnly("org.lwjgl:lwjgl-nfd:3.4.1:natives-linux"))
+    include(runtimeOnly("org.lwjgl:lwjgl-nfd:3.4.1:natives-linux-arm64"))
+    include(runtimeOnly("org.lwjgl:lwjgl-nfd:3.4.1:natives-macos"))
+    include(runtimeOnly("org.lwjgl:lwjgl-nfd:3.4.1:natives-macos-arm64"))
+}
+
+processResources {
+    def modVersion = project.version
+    inputs.property 'version', modVersion
+    filesMatching('fabric.mod.json') {
+        expand 'version': modVersion
+    }
+}
+
+java {
+    withSourcesJar()
+}
+
+jar {
+    from(rootProject.file('LICENSE')) {
+        rename { "${it}_recordcraft-fabric" }
+    }
+}
+
