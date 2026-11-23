@@ -174,7 +174,7 @@ public class VinylRecorderBlockEntityRenderer
 
         matrices.pushPose();
         matrices.translate(0.5F, 0.0F, 0.5F);
-        matrices.rotateDegrees(Axis.YP, blockRotation);
+        matrices.mulPose(Axis.YP.rotationDegrees(blockRotation));
         matrices.translate(-0.5F, 0.0F, -0.5F);
 
         if (state.hasVinyl) {
@@ -186,8 +186,8 @@ public class VinylRecorderBlockEntityRenderer
                     7.5F / 16.0F
             );
 
-            matrices.rotateDegrees(Axis.XP, 90.0F);
-            matrices.rotateDegrees(Axis.ZP, state.discRotation);
+            matrices.mulPose(Axis.XP.rotationDegrees(90.0F));
+            matrices.mulPose(Axis.ZP.rotationDegrees(state.discRotation));
             matrices.scale(0.42F, 0.42F, 0.42F);
 
             state.vinyl.submit(
@@ -211,7 +211,7 @@ public class VinylRecorderBlockEntityRenderer
         float pivotZ = VinylRecorderTonearmModel.PIVOT_Z / 16.0F;
 
         matrices.translate(pivotX, pivotY, pivotZ);
-        matrices.rotateDegrees(Axis.YP, 26.0F * state.tonearmPosition);
+        matrices.mulPose(Axis.YP.rotationDegrees(26.0F * state.tonearmPosition));
         matrices.translate(-pivotX, -pivotY, -pivotZ);
 
         queue.submitModelPart(
