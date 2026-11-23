@@ -45,21 +45,21 @@ public final class BecoyaAccessoriesLayer extends RenderLayer<AvatarRenderState,
             Identifier texture = VinylCraft.id("textures/entity/headphones/" + data.recordcraft$headphonesColor() + ".png");
             poseStack.pushPose();
             parent.head.translateAndRotate(poseStack);
-            collector.submitModel(headphonesModel, state, poseStack, texture, packedLight, overlay, state.outlineColor);
+            collector.submitModel(headphonesModel, state, poseStack, texture, packedLight, overlay, state.outlineColor, null);
             poseStack.popPose();
         }
         if (discman && headphones) {
             poseStack.pushPose();
             parent.body.translateAndRotate(poseStack);
-            collector.submitModel(cableModel, state, poseStack, CABLE_TEXTURE, packedLight, overlay, state.outlineColor);
+            collector.submitModel(cableModel, state, poseStack, CABLE_TEXTURE, packedLight, overlay, state.outlineColor, null);
             poseStack.popPose();
         }
         if (discman) {
             poseStack.pushPose();
             parent.body.translateAndRotate(poseStack);
             poseStack.translate(0.12D, 0.58D, -0.28D);
-            poseStack.rotateDegrees(Axis.YP, -1.5F);
-            collector.submitModel(discmanModel, state, poseStack, DISCMAN_TEXTURE, packedLight, overlay, state.outlineColor);
+            poseStack.mulPose(Axis.YP.rotationDegrees(-1.5F));
+            collector.submitModel(discmanModel, state, poseStack, DISCMAN_TEXTURE, packedLight, overlay, state.outlineColor, null);
             poseStack.popPose();
         }
     }
