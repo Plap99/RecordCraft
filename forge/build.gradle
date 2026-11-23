@@ -1,0 +1,86 @@
+plugins {
+    id 'java'
+    id 'net.minecraftforge.gradle' version '[7.0.17,8)'
+}
+
+base {
+    archivesName = 'recordcraft-forge'
+}
+
+sourceSets.main.java.srcDir(rootProject.file('common/src/main/java'))
+sourceSets.main.resources.srcDir(rootProject.file('common/src/main/resources'))
+sourceSets.main.resources.srcDir 'src/generated/resources'
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(25)
+
+minecraft {
+    runs {
+        configureEach {
+            workingDir = layout.projectDirectory.dir('run')
+            args '--mixin.config=vinylcraft.mixins.json,vinylcraft.client.mixins.json'
+            mods {
+                vinylcraft {
+                    source sourceSets.main
+                }
+            }
+        }
+        register('client')
+        register('server') {
+            args '--nogui'
+        }
+    }
+}
+
+repositories {
+    minecraft.mavenizer(it)
+    maven fg.forgeMaven
+    maven fg.minecraftLibsMaven
+    mavenCentral()
+}
+
+configurations {
+    bundled
+}
+
+dependencies {
+    implementation minecraft.dependency("net.minecraftforge:forge:${project.forge_version}")
+    implementation 'net.jthink:jaudiotagger:3.0.1'
+    implementation 'javazoom:jlayer:1.0.1'
+    implementation 'org.lwjgl:lwjgl-nfd:3.4.1'
+    bundled 'net.jthink:jaudiotagger:3.0.1'
+    bundled 'javazoom:jlayer:1.0.1'
+    bundled 'org.lwjgl:lwjgl-nfd:3.4.1'
+    ['natives-windows', 'natives-windows-arm64', 'natives-linux', 'natives-linux-arm64',
+     'natives-macos', 'natives-macos-arm64'].each { nativeClassifier ->
+        bundled "org.lwjgl:lwjgl-nfd:3.4.1:${nativeClassifier}"
+    }
+}
+
+configurations.compileClasspath.attributes.attribute(
+        org.gradle.api.attributes.java.TargetJvmVersion.TARGET_JVM_VERSION_ATTRIBUTE, 25)
+configurations.runtimeClasspath.attributes.attribute(
+        org.gradle.api.attributes.java.TargetJvmVersion.TARGET_JVM_VERSION_ATTRIBUTE, 25)
+
+processResources {
+    def properties = [version: project.version]
+    inputs.properties properties
+    filesMatching('META-INF/mods.toml') {
+        expand properties
+    }
+}
+
+jar {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    from({ configurations.bundled.collect { it.isDirectory() ? it : zipTree(it) } })
+    manifest {
+        attributes(['MixinConfigs': 'vinylcraft.mixins.json,vinylcraft.client.mixins.json'])
+    }
+    from(rootProject.file('LICENSE')) {
+        rename { "${it}_recordcraft-forge" }
+    }
+}
+
+java {
+    withSourcesJar()
+}
+
